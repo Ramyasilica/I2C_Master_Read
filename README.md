@@ -104,7 +104,7 @@ This repository demonstrates a **working I2C Master Read controller** implemente
 The simulation waveform verifies correct clock generation, data sampling, and successful read operation, making this project a **strong foundation** for further enhancements such as full I2C controller integration.
 
 
-##Thank you for visiting!
+## Thank you for visiting!
 
 This is my **sixth GitHub repository**, and more protocol-based RTL projects will be added soon 🚀
 

@@ -49,9 +49,7 @@
     // STOP helper
     reg stop_phase;
 
-    // -----------------------------
-    // SCL generator (unchanged)
-    // -----------------------------
+    // SCL generator
     reg [3:0] div;
     always @(posedge clk or posedge rst) begin
         if (rst) begin
@@ -66,18 +64,14 @@
         end
     end
 
-    // -----------------------------
     // SCL rising edge detect
-    // -----------------------------
     reg scl_d;
     wire scl_rise;
 
     always @(posedge clk) scl_d <= scl;
     assign scl_rise = (scl == 1'b1 && scl_d == 1'b0);
 
-    // -----------------------------
     // FSM
-    // -----------------------------
     always @(posedge clk or posedge rst) begin
         if (rst) begin
             state      <= IDLE;
@@ -144,18 +138,17 @@
                         state <= STOP;
                 end
 
-                // ✅ CORRECT STOP LOGIC
                 STOP: begin
                     busy <= 1;
 
-                    // Phase 1: force SDA low while SCL low
+                    //  SDA low while SCL low
                     if (!stop_phase) begin
                         if (scl == 0) begin
                             sda_oe     <= 1; // SDA low
                             stop_phase <= 1;
                         end
                     end
-                    // Phase 2: release SDA on SCL rising edge
+                    // release SDA on SCL rising edge
                     else begin
                         if (scl_rise) begin
                             sda_oe     <= 0; // SDA 0 → 1 while SCL=1

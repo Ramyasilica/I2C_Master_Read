@@ -88,14 +88,8 @@ From the simulation waveform:
 * Proper clock-data relationship
 * Successful I2C master read operation
 
-This confirms that the **I2C read logic works as expected**.
-
-
 ## 🖼️ Output Waveform
-
-*Add your simulation waveform image here showing SCL, SDA, bit counter, and data read operation.*
-
----
+![image alt](https://github.com/Ramyasilica/I2C_Master_Read/blob/54ca25d17406cd5ba7bc627fcd2a022062397a5d/I2C_Master_Read.jpg)
 
  🧾 Conclusion
 
